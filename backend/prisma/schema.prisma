@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id        Int              @id
+  code      String
+  title     String           @db.VarChar(100)
+  type      String
+  yearLevel Int              @map("year_level")
+
+  schedules CourseSchedule[]
+
+  @@unique([code, title])
+  @@map("courses")
+}
+
+model CourseSchedule {
+  id           Int      @id
+  courseId     Int      @map("course_id")
+  section      Int
+  startWeek    Int      @map("start_week")
+  endWeek      Int      @map("end_week")
+  dayOfWeek    String   @map("day_of_week")
+  startTime    String   @map("start_time")
+  endTime      String   @map("end_time")
+  room         String?  @db.VarChar(20)
+  studentGroup String?  @map("student_group")
+  remarks      String?  @db.VarChar(255)
+
+  course Course @relation(fields: [courseId], references: [id])
+
+  @@index([courseId])
+  @@map("courses_schedule")
+}

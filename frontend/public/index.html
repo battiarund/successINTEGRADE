@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Schedule</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <main>
+    <h1>Class Schedule</h1>
+
+    <div id="year-buttons">
+      <button data-year="" aria-pressed="true">All</button>
+      <button data-year="1" aria-pressed="false">Year 1</button>
+      <button data-year="2" aria-pressed="false">Year 2</button>
+      <button data-year="3" aria-pressed="false">Year 3</button>
+      <button data-year="4" aria-pressed="false">Year 4</button>
+    </div>
+
+    <p id="empty-message" data-testid="empty-message" hidden>
+      There is currently no class schedule. Please check back later.
+    </p>
+
+    <table data-testid="schedule-table">
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Section</th>
+          <th>Group</th>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Weeks</th>
+          <th>Remarks</th>
+        </tr>
+      </thead>
+
+      <tbody id="schedule-body"></tbody>
+    </table>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
